@@ -17,7 +17,26 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from .views import (
+    ListExperienceProView, CreateExperienceProView, UpdateExperienceProView, DeleteExperienceProView,
+    ListFormationView, CreateFormationView, UpdateFormationView, DeleteFormationView,
+)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+
+    # Experiences Pro
+    path("experiences/list", ListExperienceProView.as_view(), name="experiencepro-list"),
+    path("experiences/new", CreateExperienceProView.as_view(), name="experiencepro-new"),
+    path("experiences/int:pk/", UpdateExperienceProView.as_view(), name="experiencepro-update"),
+    path("experiences/int:pk/delete/", DeleteExperienceProView.as_view(), name="experiencepro-delete"),
+
+    # Formations
+    path("formations/list", ListFormationView.as_view(), name="formations-list"),
+    path("formations/new", CreateFormationView.as_view(), name="formations-new"),
+    path("formations/list", UpdateFormationView.as_view(), name="formations-update"),
+    path("formations/list", DeleteFormationView.as_view(), name="formations-delete"),
 ]
+
+
